@@ -1,6 +1,5 @@
 import './App.css';
-import Bulb from './components/Bulb';
-import Counter from './components/Counter';
+import Register from './components/Register';
 // 리랜더링이 진행되는 상황 
 // 1. state 변경
 // 2. props 값을 받았을 때
@@ -15,8 +14,7 @@ function App() { // 부모 부모->자식 (계층)
  
   return (
     <>
-      <Bulb/>
-      <Counter/>
+    <Register/>
      </>
   )
 }
