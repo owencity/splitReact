@@ -10,7 +10,7 @@
     width: 20px;
 }
 
-.TodoItem content {
+.TodoItem .content {
     flex : 1;
 }
 
