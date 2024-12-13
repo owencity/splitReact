@@ -1,8 +1,11 @@
 import './List.css'
 import TodoItem from './TodoItem';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useContext } from 'react';
+import { TodoContext } from '../App';
 
-const List = ({todos, onUpdate, onDelete}) => {
+const List = () => {
+    
+    const {todos} = useContext(TodoContext);
     const [search, setSearch] = useState("");
 
     const onChangeSearch = (e) => {
@@ -107,8 +110,7 @@ const List = ({todos, onUpdate, onDelete}) => {
             return <TodoItem 
             key={todo.id} 
             {...todo} 
-            onUpdate={onUpdate}
-            onDelete={onDelete}/> // props 받는 문법
+           /> // props 받는 문법
          })} 
         {/* 
             map은 배열의 각 요소 순회, 제공된 콜백함수의 반환값으로 새 배열 생성(원본배열 변경x)

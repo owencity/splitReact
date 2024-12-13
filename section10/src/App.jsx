@@ -2,7 +2,7 @@ import './App.css'
 import Header from './components/header'
 import List from './components/List'
 import Editor from './components/Editor'
-import { useState, useRef, useReducer, useCallback } from 'react'
+import { useState, useRef, useReducer, useCallback, createContext } from 'react'
 
 const mockData = [
   {
@@ -44,7 +44,7 @@ function reducer(state,action) {
     }
   }
 
-
+export const TodoContext = createContext();
 
 // 컴포넌트는 UI를 표현하기 위함
 // UI를 표현하는 코드보다 상태를 관리하는 코드가 내부에 많은것은 좋지않다.
@@ -105,8 +105,17 @@ function App() {
   return (
     <div className='App'>
      <Header/>
-     <Editor onCreate={onCreate}/>
-     <List todos={todos} onUpdate={onUpdate} onDelete={onDelete}/>
+     <TodoContext.Provider 
+      value={{
+        todos,
+        onCreate,
+        onUpdate,
+        onDelete,
+      }}
+     >     
+     <Editor/>
+     <List/>
+    </TodoContext.Provider>
     </div>
     )
   }
